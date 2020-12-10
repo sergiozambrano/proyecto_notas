@@ -1,47 +1,41 @@
 $(document).ready(function(){
   $.ajax({
-    url:"./../Autenticacion/Controller/Roles.C.php",
+    url:"../../Controller/Roles.C.php",
     type:"POST",
     datatype: "json",
     success:function(data){
       data = JSON.parse(data);
+      console.log(data);
 
       for (let i = 0; i < data['rol'].length; i++) {
-        if (i == 0) {
-          $('select#selectRol').append("<option value="+i+">"+data['rol'][i]['descripcion']+"</option>");
-
-        }
-        else {
-          $('select#selectRol').append("<option value="+i+">"+data['rol'][i]['descripcion']+"</option>");
-        }
+        $('select#selectRol').append("<option value="+i+">"+data['rol'][i]+"</option>");
       }
 
-      var cont = document.createElement('div');
-      for (let i = 0; i < data['acceso'].length; i++) {
-        cont.innerHTML += "<a class='nav-link' href="+data['acceso'][i]['url']+"><span>"+data['acceso'][i]['descripcion']+"</span></a>";
-      }
-      $('li#acceso').find('div').replaceWith(cont);
-
+      acceso(data);
     }
   });
 
   $('select#selectRol').on('change', function(){
-    let data = $('select#selectRol option:Selected').text();
+    let select = $('select#selectRol option:Selected').val();
     $.ajax({
-      url:"./../Controller/Roles.C.php",
+      url:"../../Controller/Roles.C.php",
       type:"POST",
       datatype: "json",
-      data: {valor:'acceso', data},
       success:function(data) {
         data = JSON.parse(data);
 
-        var cont = document.createElement('div');
-        for (let i = 0; i < data.length; i++) {
-          cont.innerHTML += "<a class='nav-link' href="+data[i]['url']+"><span>"+data[i]['descripcion']+"</span></a>";
-        }
-
-        $('li#acceso').find('div').replaceWith(cont);
+        acceso(data,select);
       }
     });
   });
+
+  function acceso(data, select=0) {
+    var cont = document.createElement('div');
+      for (let i = 0; i < data['acceso'][select].length; i++) {
+        cont.innerHTML += "<a class='nav-link' href="+data['acceso'][select][i]['url']+" target='main'><span>"+data['acceso'][select][i]['descripcion']+"</span></a>";
+
+        $('#iframe').attr('src',data['acceso'][select][0]['url']);
+      }
+      $('li#acceso').find('div').replaceWith(cont);
+  }
 });

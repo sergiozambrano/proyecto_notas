@@ -12,13 +12,13 @@ $('#formLogin').submit(function(e){
       return false;
     }else{
         $.ajax({
-           url:"./Autenticacion/Controller/Login.C.php",
+           url:"./Controller/Autenticacion/Login.C.php",
            type:"POST",
            datatype: "json",
            data: {usuario:usuario, password:password},
            success:function(data){
                if(data == 1){
-                  $(location).attr('href',"View/Plantilla.php");
+                  $(location).attr('href',"Views/Plantilla/Plantilla.php");
                }
                else if(data == 2){
                     Swal.fire({

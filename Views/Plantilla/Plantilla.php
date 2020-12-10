@@ -1,5 +1,5 @@
 <?php
-include_once('./../Enviroment/Autenticacion.php');
+include_once('../../Enviroment/Autenticacion.php');
 $sesion = new Sesion();
 $sesion->autenticacion();
 ?>
@@ -14,23 +14,23 @@ $sesion->autenticacion();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Evaliacion login</title>
+  <title>Proyecto Notas</title>
 
   <!-- Custom fonts for this template-->
-  <link href="./../Library/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="./../../Library/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
-  <link href="./../Css/sb-admin-2.min.css" rel="stylesheet">
+  <link href="../../Css/sb-admin-2.min.css" rel="stylesheet">
 
   <!--datables CSS básico-->
-  <link rel="stylesheet" type="text/css" href="./../Library/vendor/datatables/datatables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="../../Library/vendor/datatables/datatables.min.css"/>
 
   <!--datables estilo bootstrap 4 CSS-->
-  <link rel="stylesheet"  type="text/css" href="./../Library/vendor/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet"  type="text/css" href="../../Library/vendor/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
 
   <!--Css propios-->
-  <link href="../Css/iframe.css" rel="stylesheet">
+  <link href="../../Css/iframe.css" rel="stylesheet">
 
 </head>
 
@@ -42,13 +42,13 @@ $sesion->autenticacion();
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
+      <!-- Sidebar - Brand
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
         <div class="sidebar-brand-text mx-3">Evaluacion PHP</div>
-      </a>
+      </a> -->
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
@@ -125,7 +125,7 @@ $sesion->autenticacion();
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["nombre"];?></span>
                 <!-- Imagen perfil usuario -->
-                <img class="img-profile rounded-circle" src="./../img/user.png">
+                <img class="img-profile rounded-circle" src="../../img/user.png">
               </a>
 
               <!-- Dropdown - User Information -->
@@ -141,7 +141,7 @@ $sesion->autenticacion();
         </nav>
 
         <main>
-          <iframe name="iframe" id="iframe" src="###" frameborder="0" scrolling="no">
+          <iframe name="iframe" id="iframe" src="" frameborder="0" scrolling="no">
           </iframe>
         </main>
 
@@ -171,28 +171,27 @@ $sesion->autenticacion();
         <div class="modal-body"></div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <a class="btn btn-primary" href="./../Controller/Logout.C.php">Salir</a>
+          <a class="btn btn-primary" href="../../Controller/Autenticacion/Logout.C.php">Salir</a>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Código JavaScript-->
-  <script src="./../Library/vendor/jquery/jquery.min.js"></script>
-  <script src="./../Library/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../Library/vendor/jquery/jquery.min.js"></script>
+  <script src="../../Library/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
-  <script src="./../Library/vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="../../Library/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
-  <script src="./../Js/sb-admin-2.min.js"></script>
+  <script src="../../Js/sb-admin-2.min.js"></script>
 
   <!-- datatables JS -->
-  <script type="text/javascript" src="./../Library/vendor/datatables/datatables.min.js"></script>
+  <script src="../../Library/vendor/datatables/datatables.min.js"></script>
 
   <!-- código propio JS -->
-  <script type="text/javascript" src="./../Js/roles.js"></script>
-  <script type="text/javascript" src="./../Js/vista.js"></script>
+  <script src="../../Js/roles.js"></script>
 
 </body>
 </html>

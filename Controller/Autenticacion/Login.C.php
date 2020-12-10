@@ -1,6 +1,6 @@
 <?php
-include_once('../Model/Autenticacion/Data/Login.D.php');
-include_once('../Model/Autenticacion/Login.M.php');
+include_once("../../Model/Autenticacion/Login.D.php");
+include_once("../../Model/Autenticacion/Login.M.php");
 
 $documento = $_POST['usuario'];
 $pass = $_POST['password'];
