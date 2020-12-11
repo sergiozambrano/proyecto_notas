@@ -6,35 +6,21 @@ $(document).ready(function(){
     success:function(data){
       data = JSON.parse(data);
 
-      for (let i = 0; i < data['rol'].length; i++) {
-        $('select#selectRol').append("<option value="+i+">"+data['rol'][i]+"</option>");
+      var cont;
+
+      //Mostrar los accesos dependiento el rol
+      if (data['rol_usu'] == 'Administrador') {
+
+        cont  = "<a class='nav-link' href='' target='main'><span>Usuario</span></a>"+
+                "<a class='nav-link' href='' target='main'><span>Alumnos</span></a>";
+
+      }else if(data['rol_usu'] == 'Docente'){
+        cont = "<a class='nav-link' href='' target='main'><span>Notas</span></a>";
       }
 
-      acceso(data);
+      //Agregando los accesos a la vista
+      $('li#acceso').find('div').append(cont);
     }
   });
 
-  $('select#selectRol').on('change', function(){
-    let select = $('select#selectRol option:Selected').val();
-    $.ajax({
-      url:"../../Controller/Autenticacion/Roles.C.php",
-      type:"POST",
-      datatype: "json",
-      success:function(data) {
-        data = JSON.parse(data);
-
-        acceso(data,select);
-      }
-    });
-  });
-
-  function acceso(data, select=0) {
-    var cont = document.createElement('div');
-      for (let i = 0; i < data['acceso'][select].length; i++) {
-        cont.innerHTML += "<a class='nav-link' href="+data['acceso'][select][i]['url']+" target='main'><span>"+data['acceso'][select][i]['descripcion']+"</span></a>";
-
-        $('#iframe').attr('src',data['acceso'][select][0]['url']);
-      }
-      $('li#acceso').find('div').replaceWith(cont);
-  }
 });

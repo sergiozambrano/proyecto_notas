@@ -6,21 +6,10 @@ if(!isset($_SESSION)) {
 }
 
 $loginM = new LoginM();
-@$valor = $_POST['valor'];
 $data;
-$rol;
 
-if($valor == ''){
-    $documento = $_SESSION['documento'];
-    $data['rol'] = $loginM->roles($documento);
-
-    $rol = $data['rol'][0]['descripcion'];
-    $data['acceso'] = $loginM->acceso($rol);
-}
-elseif ($valor = 'acceso') {
-    $rol = $_POST['data'];
-    $data = $loginM->acceso($rol);
-}
+$documento = $_SESSION['documento'];
+$data = $loginM->roles($documento);
 
 print json_encode($data);
 

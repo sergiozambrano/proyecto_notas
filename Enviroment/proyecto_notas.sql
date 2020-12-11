@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-12-2020 a las 01:48:53
+-- Tiempo de generación: 11-12-2020 a las 02:57:21
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -177,7 +177,8 @@ CREATE TABLE `persona` (
 --
 
 INSERT INTO `persona` (`id_persona`, `nombre_per`, `apellido_per`, `tipo_doc_per`, `num_doc_per`, `num_cel_per`, `corre_per`, `id_usuario_creacion`, `fecha_creacion`) VALUES
-(1, 'Sergio Andrés', 'Zambrano Morales', 'Cédula de Ciudadanía', '1234567890', '3158843018', 'sergio@gmail.com', 0, '2020-12-09 01:07:17');
+(1, 'Sergio Andrés', 'Zambrano Morales', 'Cédula de Ciudadanía', '1234567890', '3158843018', 'sergio@gmail.com', 0, '2020-12-09 01:07:17'),
+(2, 'Andres', 'Morales', 'Cédula de ciudadanía', '1003813222', '124523212', 'andres@gmail.com', 0, '2020-12-11 01:48:49');
 
 -- --------------------------------------------------------
 
@@ -228,7 +229,8 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `id_persona`, `rol_usu`, `pass_usu`, `estado_usu`, `id_usario_creacion`, `fecha_creacion`) VALUES
-(1, 1, 'Administrador', '$2y$10$gSZf9nVek/NRU99Q6pC9/uOK.PAUHpKKkRgWNddWeitP3L/192KBe', 0, 0, '2020-12-09 01:55:47');
+(1, 1, 'Administrador', '$2y$10$gSZf9nVek/NRU99Q6pC9/uOK.PAUHpKKkRgWNddWeitP3L/192KBe', 1, 0, '2020-12-11 01:53:00'),
+(2, 2, 'Docente', '$2y$10$gSZf9nVek/NRU99Q6pC9/uOK.PAUHpKKkRgWNddWeitP3L/192KBe', 1, 0, '2020-12-11 01:52:46');
 
 --
 -- Índices para tablas volcadas
@@ -304,7 +306,8 @@ ALTER TABLE `periodo`
 -- Indices de la tabla `persona`
 --
 ALTER TABLE `persona`
-  ADD PRIMARY KEY (`id_persona`);
+  ADD PRIMARY KEY (`id_persona`),
+  ADD UNIQUE KEY `num_doc_per` (`num_doc_per`,`num_cel_per`,`corre_per`);
 
 --
 -- Indices de la tabla `sistema_eva`
@@ -390,7 +393,7 @@ ALTER TABLE `periodo`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `sistema_eva`
@@ -408,7 +411,7 @@ ALTER TABLE `sis_eva_usu`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Restricciones para tablas volcadas

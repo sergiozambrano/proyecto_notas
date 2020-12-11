@@ -54,7 +54,9 @@ $sesion->autenticacion();
       <hr class="sidebar-divider my-0">
 
       <li class="nav-item active">
-        <img src='../../img/logo-sena.png' id="logoSena">
+        <div class="sidebar-brand-icon text-center">
+          <img src='../../img/logo-sena.png' id="logoSena">
+        </div>
       </li>
 
       <!-- Divider -->

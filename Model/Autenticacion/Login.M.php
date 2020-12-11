@@ -49,39 +49,19 @@ class LoginM extends Conexion{
 
     public function roles($documento){
         try {
-            $this->sql = "SELECT r.descripcion
-                        FROM rol AS r
-                        INNER JOIN usuario_rol AS u_r ON u_r.id_rol = r.id_rol
-                        INNER JOIN usuario AS u ON u.id_usuario = u_r.id_usuario
-                        WHERE u.documento_usu = ?";
+            $this->sql = "SELECT rol_usu
+                          FROM usuario AS u
+                          INNER JOIN persona AS p ON p.id_persona=u.id_persona
+                          WHERE p.num_doc_per=?";
             $this->statement = $this->conexion->prepare($this->sql);
             $this->statement->execute(array($documento));
 
-            $this->resulSet = $this->statement->fetchAll(PDO::FETCH_ASSOC);
+            $this->resulSet = $this->statement->fetch(PDO::FETCH_ASSOC);
             return $this->resulSet;
 
         } catch (\Throwable $e) {
             return -1;
         }
     }
-
-    /* public function acceso($rol){
-        try {
-            $this->sql = "SELECT f.descripcion, f.url
-                        FROM formulario AS f
-                        INNER JOIN formulario_rol AS f_r ON f.id_formulario=f_r.id_formularo
-                        INNER JOIN rol as r ON r.id_rol=f_r.id_rol
-                        WHERE r.descripcion = ?";
-            $this->statement = $this->conexion->prepare($this->sql);
-            $this->statement->execute(array($rol));
-
-            $this->resulSet = $this->statement->fetchAll(PDO::FETCH_ASSOC);
-
-            return $this->resulSet;
-
-        } catch (\Throwable $e) {
-            return -1;
-        }
-    } */
 }
 ?>
