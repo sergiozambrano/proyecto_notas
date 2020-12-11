@@ -65,7 +65,7 @@ class LoginM extends Conexion{
         }
     }
 
-    public function acceso($rol){
+    /* public function acceso($rol){
         try {
             $this->sql = "SELECT f.descripcion, f.url
                         FROM formulario AS f
@@ -82,6 +82,6 @@ class LoginM extends Conexion{
         } catch (\Throwable $e) {
             return -1;
         }
-    }
+    } */
 }
 ?>

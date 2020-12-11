@@ -1,11 +1,10 @@
 $(document).ready(function(){
   $.ajax({
-    url:"../../Controller/Roles.C.php",
+    url:"../../Controller/Autenticacion/Roles.C.php",
     type:"POST",
     datatype: "json",
     success:function(data){
       data = JSON.parse(data);
-      console.log(data);
 
       for (let i = 0; i < data['rol'].length; i++) {
         $('select#selectRol').append("<option value="+i+">"+data['rol'][i]+"</option>");
@@ -18,7 +17,7 @@ $(document).ready(function(){
   $('select#selectRol').on('change', function(){
     let select = $('select#selectRol option:Selected').val();
     $.ajax({
-      url:"../../Controller/Roles.C.php",
+      url:"../../Controller/Autenticacion/Roles.C.php",
       type:"POST",
       datatype: "json",
       success:function(data) {

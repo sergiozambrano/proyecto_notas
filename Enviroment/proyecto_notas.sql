@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-12-2020 a las 19:29:55
+-- Tiempo de generación: 11-12-2020 a las 01:48:53
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -129,7 +129,6 @@ CREATE TABLE `jornada` (
 
 CREATE TABLE `nota` (
   `id_nota` int(11) NOT NULL,
-  `id_curso` int(11) NOT NULL,
   `id_periodo` int(11) NOT NULL,
   `id_sis_eva` int(11) NOT NULL COMMENT 'identificador del sistema de evaluacion',
   `id_usu_est` int(11) NOT NULL,
@@ -173,19 +172,12 @@ CREATE TABLE `persona` (
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
 --
--- Estructura de tabla para la tabla `rol`
+-- Volcado de datos para la tabla `persona`
 --
 
-CREATE TABLE `rol` (
-  `id_rol` int(11) NOT NULL,
-  `nombre_rol` varchar(45) NOT NULL,
-  `estado_rol` tinyint(4) NOT NULL,
-  `id_usuario_rol` int(11) NOT NULL,
-  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+INSERT INTO `persona` (`id_persona`, `nombre_per`, `apellido_per`, `tipo_doc_per`, `num_doc_per`, `num_cel_per`, `corre_per`, `id_usuario_creacion`, `fecha_creacion`) VALUES
+(1, 'Sergio Andrés', 'Zambrano Morales', 'Cédula de Ciudadanía', '1234567890', '3158843018', 'sergio@gmail.com', 0, '2020-12-09 01:07:17');
 
 -- --------------------------------------------------------
 
@@ -224,11 +216,19 @@ CREATE TABLE `sis_eva_usu` (
 CREATE TABLE `usuario` (
   `id_usuario` int(11) NOT NULL,
   `id_persona` int(11) NOT NULL,
-  `id_rol` int(11) NOT NULL,
+  `rol_usu` enum('Administrador','Docente') NOT NULL,
   `pass_usu` varchar(255) NOT NULL,
+  `estado_usu` tinyint(1) NOT NULL,
   `id_usario_creacion` int(11) NOT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `id_persona`, `rol_usu`, `pass_usu`, `estado_usu`, `id_usario_creacion`, `fecha_creacion`) VALUES
+(1, 1, 'Administrador', '$2y$10$gSZf9nVek/NRU99Q6pC9/uOK.PAUHpKKkRgWNddWeitP3L/192KBe', 0, 0, '2020-12-09 01:55:47');
 
 --
 -- Índices para tablas volcadas
@@ -290,7 +290,6 @@ ALTER TABLE `jornada`
 ALTER TABLE `nota`
   ADD PRIMARY KEY (`id_nota`),
   ADD KEY `fk_nota_periodo` (`id_periodo`),
-  ADD KEY `fk_nota_curso` (`id_curso`),
   ADD KEY `fk_nota_asi_eva` (`id_sis_eva`),
   ADD KEY `fk_nota_usu_est` (`id_usu_est`),
   ADD KEY `fk_nota_asignatura` (`id_asignatura`);
@@ -306,12 +305,6 @@ ALTER TABLE `periodo`
 --
 ALTER TABLE `persona`
   ADD PRIMARY KEY (`id_persona`);
-
---
--- Indices de la tabla `rol`
---
-ALTER TABLE `rol`
-  ADD PRIMARY KEY (`id_rol`);
 
 --
 -- Indices de la tabla `sistema_eva`
@@ -333,7 +326,7 @@ ALTER TABLE `sis_eva_usu`
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id_usuario`),
   ADD KEY `fk_usuario_persona` (`id_persona`),
-  ADD KEY `fk_usuario_rol` (`id_rol`);
+  ADD KEY `fk_usuario_rol` (`rol_usu`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -397,13 +390,7 @@ ALTER TABLE `periodo`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `rol`
---
-ALTER TABLE `rol`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_persona` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `sistema_eva`
@@ -421,7 +408,7 @@ ALTER TABLE `sis_eva_usu`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Restricciones para tablas volcadas
@@ -461,7 +448,6 @@ ALTER TABLE `curso_usuario`
 ALTER TABLE `nota`
   ADD CONSTRAINT `fk_nota_asi_eva` FOREIGN KEY (`id_sis_eva`) REFERENCES `sistema_eva` (`id_sistema_eva`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_nota_asignatura` FOREIGN KEY (`id_asignatura`) REFERENCES `asignatura` (`id_asignatura`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_nota_curso` FOREIGN KEY (`id_curso`) REFERENCES `curso` (`id_curso`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_nota_periodo` FOREIGN KEY (`id_periodo`) REFERENCES `periodo` (`id_periodo`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_nota_usu_est` FOREIGN KEY (`id_usu_est`) REFERENCES `usuario` (`id_usuario`) ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -476,8 +462,7 @@ ALTER TABLE `sis_eva_usu`
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `fk_usuario_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_usuario_rol` FOREIGN KEY (`id_rol`) REFERENCES `rol` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_usuario_persona` FOREIGN KEY (`id_persona`) REFERENCES `persona` (`id_persona`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

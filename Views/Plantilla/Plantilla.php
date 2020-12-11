@@ -30,7 +30,7 @@ $sesion->autenticacion();
   <link rel="stylesheet"  type="text/css" href="../../Library/vendor/datatables/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
 
   <!--Css propios-->
-  <link href="../../Css/iframe.css" rel="stylesheet">
+  <link href="../../Css/estiloP.css" rel="stylesheet">
 
 </head>
 
@@ -53,12 +53,8 @@ $sesion->autenticacion();
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-
       <li class="nav-item active">
-        <p class="nav-link" href="inde.php">
-          <select class="form-control" id="selectRol">
-          </select>
-        </p>
+        <img src='../../img/logo-sena.png' id="logoSena">
       </li>
 
       <!-- Divider -->
@@ -168,7 +164,6 @@ $sesion->autenticacion();
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <div class="modal-body"></div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <a class="btn btn-primary" href="../../Controller/Autenticacion/Logout.C.php">Salir</a>
@@ -191,7 +186,7 @@ $sesion->autenticacion();
   <script src="../../Library/vendor/datatables/datatables.min.js"></script>
 
   <!-- código propio JS -->
-  <script src="../../Js/roles.js"></script>
+  <script src="../../Js/Autenticacion/roles.js"></script>
 
 </body>
 </html>
