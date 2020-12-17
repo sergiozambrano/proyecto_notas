@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="shortcut icon" href="#" />
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Login </title>
+  <head>
 
-        <link rel="stylesheet" href="Library/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="Css/estilos.css">
-        <link rel="stylesheet" href="Library/sweetalert2/sweetalert2.min.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <link rel="stylesheet" type="text/css" href="Library/fonts/iconic/css/material-design-iconic-font.min.css">
+    <title>Login </title>
 
-    </head>
+    <!-- Custom fonts for this template-->
+    <link rel="stylesheet" type="text/css" href="Library/fonts/iconic/css/material-design-iconic-font.min.css">
 
-    <body>
+    <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="Library/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Css/estilos.css">
+    <link rel="stylesheet" href="Library/sweetalert2/sweetalert2.min.css">
 
-      <div class="container-login">
-        <div class="wrap-login">
-            <form class="login-form validate-form" id="formLogin" action="" method="post">
-                <span class="login-form-title">LOGIN</span>
 
-                <div class="wrap-input100" data-validate = "Usuario incorrecto">
-                    <input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario" autofocus>
-                    <span class="focus-efecto"></span>
-                </div>
 
-                <div class="wrap-input100" data-validate="Password incorrecto">
-                    <input class="input100" type="password" id="password" name="password" placeholder="Password">
-                    <span class="focus-efecto"></span>
-                </div>
+  </head>
+  <body>
+    <div class="container-login">
+      <div class="wrap-login">
+        <form class="login-form validate-form" id="formLogin" action="" method="post">
+          <span class="login-form-title">LOGIN</span>
 
-                <div class="container-login-form-btn">
-                    <div class="wrap-login-form-btn">
-                        <div class="login-form-bgbtn"></div>
-                        <button type="submit" name="submit" class="login-form-btn">CONECTAR</button>
-                    </div>
-                </div>
-            </form>
-        </div>
+          <div class="wrap-input100" data-validate = "Usuario incorrecto">
+            <input class="input100" type="text" id="usuario" name="usuario" placeholder="Usuario" autofocus>
+            <span class="focus-efecto"></span>
+          </div>
+
+          <div class="wrap-input100" data-validate="Password incorrecto">
+            <input class="input100" type="password" id="password" name="password" placeholder="Password">
+            <span class="focus-efecto"></span>
+          </div>
+
+          <div class="container-login-form-btn">
+            <div class="wrap-login-form-btn">
+              <div class="login-form-bgbtn"></div>
+              <button type="submit" name="submit" class="login-form-btn">CONECTAR</button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
+    <!-- Código JavaScript-->
+    <script src="Library/jquery-3.3.1.min.js"></script>
+    <script src="Library/bootstrap/js/bootstrap.min.js"></script>
+    <script src="Library/sweetalert2/sweetalert2.all.min.js"></script>
 
-     <script src="Library/jquery-3.3.1.min.js"></script>
-     <script src="Library/bootstrap/js/bootstrap.min.js"></script>
-     <script src="Library/popper.min.js"></script>
-
-     <script src="Library/sweetalert2/sweetalert2.all.min.js"></script>
-     <script src="Js/Autenticacion/login.js"></script>
-    </body>
+    <!-- código propio JS -->
+    <script src="Js/Autenticacion/Login.js"></script>
+  </body>
 </html>

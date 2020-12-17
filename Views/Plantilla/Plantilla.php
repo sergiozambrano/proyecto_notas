@@ -5,7 +5,6 @@ $sesion->autenticacion();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
   <meta charset="utf-8">
@@ -14,10 +13,10 @@ $sesion->autenticacion();
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Proyecto Notas</title>
+  <title>Empresa Auditoria</title>
 
   <!-- Custom fonts for this template-->
-  <link href="./../../Library/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="../../Library/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
@@ -42,21 +41,24 @@ $sesion->autenticacion();
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand
+      <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <!-- <i class="fas fa-chart-pie"></i> -->
+          <i class="far fa-chart-bar"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Evaluacion PHP</div>
-      </a> -->
+        <div class="sidebar-brand-text mx-3">Empresa Auditoria</div>
+      </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
+
       <li class="nav-item active">
-        <div class="sidebar-brand-icon text-center">
-          <img src='../../img/logo-sena.png' id="logoSena">
-        </div>
+        <p class="nav-link" href="inde.php">
+          <select class="form-control" id="selectRol">
+          </select>
+        </p>
       </li>
 
       <!-- Divider -->
@@ -133,14 +135,17 @@ $sesion->autenticacion();
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Cerrar Sesión
                 </a>
+                <a class="dropdown-item" href="###" target='main' data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Configuraciones
+                </a>
               </div>
             </li>
           </ul>
         </nav>
 
         <main>
-          <iframe name="iframe" id="iframe" src="" frameborder="0" scrolling="no">
-          </iframe>
+          <iframe name="main" id="iframe" src="" frameborder="0" scrolling="no"></iframe>
         </main>
 
       </div>
@@ -188,7 +193,7 @@ $sesion->autenticacion();
   <script src="../../Library/vendor/datatables/datatables.min.js"></script>
 
   <!-- código propio JS -->
-  <script src="../../Js/Autenticacion/roles.js"></script>
+  <script src="../../Js/Autenticacion/Roles.js"></script>
 
 </body>
 </html>

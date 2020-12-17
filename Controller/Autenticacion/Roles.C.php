@@ -8,8 +8,8 @@ if(!isset($_SESSION)) {
 $loginM = new LoginM();
 $data;
 
-$documento = $_SESSION['documento'];
-$data = $loginM->roles($documento);
+$id = $_SESSION['id'];
+$data = $loginM->roles($id);
 
 print json_encode($data);
 

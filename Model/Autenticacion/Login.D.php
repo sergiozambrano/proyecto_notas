@@ -4,12 +4,11 @@ class LoginD{
     private $documento;
     private $pass;
 
-    public function __construct(){
-    }
+    public function __construct(){}
 
-    public function loginD($documento, $pass){
-        $this->documento = $documento;
-        $this->pass = $pass;
+    public function ingresar($documento, $pass){
+      $this->documento = $documento;
+      $this->pass = $pass;
     }
 
     public function __set($nombre, $valor){

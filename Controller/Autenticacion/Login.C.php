@@ -1,17 +1,25 @@
 <?php
 include_once("../../Model/Autenticacion/Login.D.php");
 include_once("../../Model/Autenticacion/Login.M.php");
+if(!isset($_SESSION)) {
+  session_start();
+}
 
-$documento = $_POST['usuario'];
-$pass = $_POST['password'];
+$loginM = new LoginM();
+$loginD = new LoginD();
 $data;
 
-$loginD = new LoginD();
-$loginM = new LoginM();
+$documento = $_POST['usuario'];
 
-$loginD->loginD($documento, $pass);
-$data = $loginM->login($loginD);
+if (isset($_POST['password'])) {
+  $pass = $_POST['password'];
+
+  $loginD->ingresar($documento,$pass);
+  $data = $loginM->login($loginD);
+
+} else {
+  $data = $loginM->estado($documento);
+}
 
 print json_encode($data);
-
 ?>

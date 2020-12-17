@@ -10,7 +10,7 @@ class Conexion extends PDO{
         $this->pass = '';
 
         try {
-            $this->conexion = new PDO('mysql:host=127.0.0.1;dbname=proyecto_notas', $this->user, $this->pass);
+            $this->conexion = new PDO('mysql:host=127.0.0.1;dbname=proyecto_auditoria', $this->user, $this->pass);
             $this->conexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
             return $this->conexion;
